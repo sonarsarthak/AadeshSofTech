@@ -107,6 +107,31 @@ body {
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        background: rgba(99, 102, 241, 0.15);
+    }
+
+    .menu-toggle i {
+        font-size: 1.2rem;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.active i {
+        transform: rotate(90deg);
     }
 
     .nav-links {
@@ -114,30 +139,42 @@ body {
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 250px;
+        width: 75%;
+        max-width: 300px;
         background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(10px);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2rem;
-        transition: right 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 2rem;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .nav-links::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 150px;
+        background: var(--primary-gradient);
+        opacity: 0.1;
+        pointer-events: none;
     }
 
     .nav-links.active {
         right: 0;
-    }
-
-    .menu-toggle.active i {
-        color: #6366f1;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
 
     .nav-links li {
         opacity: 0;
-        transform: translateX(20px);
-        transition: all 0.3s ease;
+        transform: translateX(30px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+        text-align: center;
     }
 
     .nav-links.active li {
@@ -145,11 +182,41 @@ body {
         transform: translateX(0);
     }
 
+    .nav-links li a {
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 1rem;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--primary-gradient);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-links li a:hover {
+        color: #6366f1;
+    }
+
+    .nav-links li a:hover::after {
+        width: 50%;
+    }
+
     .nav-links li:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links li:nth-child(2) { transition-delay: 0.2s; }
-    .nav-links li:nth-child(3) { transition-delay: 0.3s; }
-    .nav-links li:nth-child(4) { transition-delay: 0.4s; }
-    .nav-links li:nth-child(5) { transition-delay: 0.5s; }
+    .nav-links li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links li:nth-child(5) { transition-delay: 0.3s; }
 }
 
 /* Hero Section */
