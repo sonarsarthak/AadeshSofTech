@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AadeshSofTech Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="AdeshSofTech Solutions" class="logo-img">
+                <span>AdeshSofTech Solutions</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="gradient-bg"></div>
+        <div class="hero-content">
+            <h1>Welcome to AdeshSofTech Solutions</h1>
+            <p>Building innovative solutions for tomorrow's challenges</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button primary">Get Started</a>
+                <a href="#services" class="cta-button secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Transforming ideas into powerful solutions</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-service="Web Development">
+                <div class="card-glow"></div>
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Custom websites tailored to your needs with modern technologies and best practices</p>
+            </div>
+            <div class="service-card" data-service="Mobile Solutions">
+                <div class="card-glow"></div>
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Solutions</h3>
+                <p>Cross-platform mobile applications that deliver exceptional user experiences</p>
+            </div>
+            <div class="service-card" data-service="Cloud Services">
+                <div class="card-glow"></div>
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Services</h3>
+                <p>Scalable cloud infrastructure and solutions for your growing business needs</p>
+            </div>
+            <div class="service-card" data-service="CRM Software">
+                <div class="card-glow"></div>
+                <i class="fas fa-cogs"></i>
+                <h3>CRM Software</h3>
+                <p>Custom CRM solutions to manage customer relationships, sales, and business growth</p>
+            </div>
+            <div class="service-card" data-service="ERP Software">
+                <div class="card-glow"></div>
+                <i class="fas fa-building"></i>
+                <h3>ERP Software</h3>
+                <p>Integrated ERP systems to streamline your business operations and increase efficiency</p>
+            </div>
+            <div class="service-card" data-service="Hardware & Software">
+                <div class="card-glow"></div>
+                <i class="fas fa-desktop"></i>
+                <h3>Hardware & Software</h3>
+                <p>Comprehensive IT solutions including hardware support and software implementation</p>
+            </div>
+        </div>
+
+        <!-- Service Popup -->
+        <div class="service-popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <h2 id="popup-title"></h2>
+                <div class="popup-description"></div>
+                <div class="popup-pricing">
+                    <h3>Pricing Plans</h3>
+                    <div class="pricing-details"></div>
+                </div>
+                <div class="terms-conditions">
+                    <h3>Terms & Conditions</h3>
+                    <p>* All prices mentioned are for development costs only.</p>
+                    <p>* Domain name registration and hosting charges will be billed separately.</p>
+                    <p>* Prices may vary based on specific requirements and project complexity.</p>
+                    <p>* 50% advance payment required to start the project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="industries" class="industries">
+        <div class="gradient-bg"></div>
+        <div class="section-header">
+            <h2>Solving Tech Challenges</h2>
+            <p>Across Various Industries</p>
+        </div>
+        <div class="industries-grid">
+            <button class="industry-btn">
+                <i class="fas fa-building"></i>
+                <span>Real Estate</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-hospital"></i>
+                <span>Healthcare</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Education</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span>E-commerce</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-industry"></i>
+                <span>Manufacturing</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Finance</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-truck"></i>
+                <span>Logistics</span>
+            </button>
+            <button class="industry-btn">
+                <i class="fas fa-utensils"></i>
+                <span>Food & Beverage</span>    
+            </button>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="gradient-bg"></div>
+        <div class="section-header">
+            <h2>Meet Our Team</h2>
+            <p>Passionate experts driving innovation</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="images/sarthak.jpg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarthak Sonar</h3>
+                        <p class="position">CEO & Founder</p>
+                        <p class="bio">Visionary leader with 4+ years in tech innovation</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/company/adeshsoftech/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="images/yash.jpg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Yash Kapure</h3>
+                        <p class="position">CTO</p>
+                        <p class="bio">Tech innovator specializing in AI and cloud architecture</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="images/shruti4.jpg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Shruti Sadgir</h3>
+                        <p class="position">Lead Developer</p>
+                        <p class="bio">Full-stack expert with a passion for clean code</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="gradient-bg"></div>
+        <div class="section-header">
+            <h2>About Us</h2>
+            <p>Your Trusted Technology Partner</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text reveal">
+                <p class="main-desc">
+                    AadeshSofTech is a forward-thinking software development company committed to empowering businesses through cutting-edge digital solutions. Based in India, we specialize in website development, ERP software, CRM systems, and a wide range of custom software services tailored to meet the unique needs of startups, educational institutions, and enterprises.
+                </p>
+                <div class="mission-vision">
+                    <div class="mission reveal">
+                        <h3>Our Mission</h3>
+                        <p>Our mission is to help organizations streamline operations, improve customer engagement, and drive growth using innovative and reliable technology. Whether you're looking to build a modern, responsive website, automate your business processes, or enhance customer relationship management, AadeshSofTech is your trusted technology partner.</p>
+                    </div>
+                    <div class="vision reveal">
+                        <h3>Our Approach</h3>
+                        <p>Driven by a team of passionate developers and strategic thinkers, we ensure every solution we deliver is efficient, scalable, and user-friendly. Let us transform your ideas into impactful digital solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="gradient-bg"></div>
+        <div class="section-header">
+            <h2>Get in Touch</h2>
+            <p>Let's build something amazing together</p>
+        </div>
+        <div class="contact-form">
+            <form id="whatsappForm" onsubmit="return sendWhatsApp(event)">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-content">
+                <div class="footer-info-block">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="AdeshSofTech Solutions" class="footer-logo">
+                        <span>AdeshSofTech Solutions</span>
+                    </div>
+                    <p class="footer-description">
+                        At AdeshSofTech Solutions, we are dedicated to driving digital success through innovative solutions and expert services. From web development and digital marketing to IT consulting and software development, our team is committed to helping businesses thrive in the digital era.
+                    </p>
+                </div>
+
+                <div class="footer-links-block">
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#team">Team</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#services">Web Development</a></li>
+                            <li><a href="#services">Mobile Solutions</a></li>
+                            <li><a href="#services">Cloud Services</a></li>
+                            <li><a href="#services">Business Consulting</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i> +91 7720043415</p>
+                            <p><i class="fas fa-envelope"></i> info@adeshsoftech.in</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 - AdeshSofTech Solutions Private Limited</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Terms Of Services</a>
+                        <span class="separator">|</span>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/adeshsoftech/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html> 
