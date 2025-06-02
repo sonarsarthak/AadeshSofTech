@@ -177,11 +177,34 @@ function initializeServicePopups() {
 function initializeNavigation() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
     if (menuToggle && navLinks) {
+        // Toggle menu
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && 
+                !navLinks.contains(e.target) && 
+                navLinks.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Close menu on window resize (if switching to desktop view)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
         });
     }
 
@@ -195,14 +218,20 @@ function initializeNavigation() {
 
             const target = document.querySelector(href);
             if (target) {
-                if (menuToggle && navLinks) {
+                // Close mobile menu if open
+                if (menuToggle && navLinks && navLinks.classList.contains('active')) {
                     menuToggle.classList.remove('active');
                     navLinks.classList.remove('active');
+                    body.style.overflow = '';
                 }
 
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // Smooth scroll to target
+                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                
+                window.scrollTo({
+                    top: targetPosition - navHeight,
+                    behavior: 'smooth'
                 });
             }
         });
