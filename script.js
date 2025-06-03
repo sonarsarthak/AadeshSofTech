@@ -92,9 +92,134 @@ const serviceDetails = {
     }
 };
 
+// Industry details data
+const industryDetails = {
+    'Real Estate': {
+        description: `Our Real Estate technology solutions include:
+        • Property management systems
+        • Real estate CRM solutions
+        • Virtual property tours
+        • Online booking systems
+        • Property listing portals
+        • Real estate analytics
+        • Document management systems`,
+        solutions: {
+            basic: 'Property Management System - Starting from ₹25,000',
+            standard: 'Real Estate Portal Development - Starting from ₹45,000',
+            premium: 'Complete Real Estate Tech Suite - Starting from ₹85,000'
+        }
+    },
+    'Healthcare': {
+        description: `Our Healthcare technology solutions include:
+        • Hospital management systems
+        • Electronic health records (EHR)
+        • Telemedicine platforms
+        • Medical billing software
+        • Patient portal development
+        • Healthcare analytics
+        • Pharmacy management systems`,
+        solutions: {
+            basic: 'Clinic Management System - Starting from ₹30,000',
+            standard: 'Hospital Management System - Starting from ₹60,000',
+            premium: 'Enterprise Healthcare Suite - Starting from ₹1,20,000'
+        }
+    },
+    'Education': {
+        description: `Our Education technology solutions include:
+        • Learning management systems (LMS)
+        • Student information systems
+        • Online examination platforms
+        • Virtual classroom solutions
+        • Educational content management
+        • Student performance analytics
+        • Library management systems`,
+        solutions: {
+            basic: 'Basic LMS - Starting from ₹20,000',
+            standard: 'Complete School Management System - Starting from ₹45,000',
+            premium: 'Enterprise Education Suite - Starting from ₹90,000'
+        }
+    },
+    'E-commerce': {
+        description: `Our E-commerce solutions include:
+        • Custom e-commerce platforms
+        • Multi-vendor marketplaces
+        • Inventory management systems
+        • Payment gateway integration
+        • Order management systems
+        • E-commerce analytics
+        • Mobile commerce apps`,
+        solutions: {
+            basic: 'Basic E-commerce Store - Starting from ₹30,000',
+            standard: 'Advanced E-commerce Platform - Starting from ₹60,000',
+            premium: 'Enterprise E-commerce Suite - Starting from ₹1,20,000'
+        }
+    },
+    'Manufacturing': {
+        description: `Our Manufacturing technology solutions include:
+        • Production planning systems
+        • Inventory control software
+        • Quality management systems
+        • Supply chain management
+        • Manufacturing analytics
+        • Machine monitoring systems
+        • Warehouse management`,
+        solutions: {
+            basic: 'Production Management System - Starting from ₹35,000',
+            standard: 'Manufacturing ERP - Starting from ₹75,000',
+            premium: 'Complete Manufacturing Suite - Starting from ₹1,50,000'
+        }
+    },
+    'Finance': {
+        description: `Our Finance technology solutions include:
+        • Banking software solutions
+        • Financial management systems
+        • Payment processing systems
+        • Investment management software
+        • Financial analytics
+        • Risk management systems
+        • Trading platforms`,
+        solutions: {
+            basic: 'Financial Management System - Starting from ₹40,000',
+            standard: 'Banking Software Solution - Starting from ₹80,000',
+            premium: 'Enterprise Finance Suite - Starting from ₹1,60,000'
+        }
+    },
+    'Logistics': {
+        description: `Our Logistics technology solutions include:
+        • Fleet management systems
+        • Route optimization software
+        • Warehouse management systems
+        • Order tracking solutions
+        • Inventory management
+        • Logistics analytics
+        • Supply chain optimization`,
+        solutions: {
+            basic: 'Fleet Management System - Starting from ₹30,000',
+            standard: 'Logistics Management System - Starting from ₹60,000',
+            premium: 'Enterprise Logistics Suite - Starting from ₹1,20,000'
+        }
+    },
+    'Food & Beverage': {
+        description: `Our Food & Beverage technology solutions include:
+        • Restaurant management systems
+        • Online ordering platforms
+        • Kitchen management systems
+        • Inventory & recipe management
+        • POS systems
+        • Food delivery solutions
+        • Customer loyalty programs`,
+        solutions: {
+            basic: 'Restaurant Management System - Starting from ₹25,000',
+            standard: 'Complete F&B Solution - Starting from ₹50,000',
+            premium: 'Enterprise F&B Suite - Starting from ₹1,00,000'
+        }
+    }
+};
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeServicePopups();
+    initializeIndustryPopups();
     initializeNavigation();
     initializeAnimations();
 });
@@ -149,6 +274,67 @@ function initializeServicePopups() {
 
                 popup.style.display = 'flex';
                 console.log('Popup displayed');
+            }
+        });
+    });
+
+    // Close popup when clicking the close button
+    closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.style.display === 'flex') {
+            popup.style.display = 'none';
+        }
+    });
+}
+
+// Initialize industry popups
+function initializeIndustryPopups() {
+    const industryButtons = document.querySelectorAll('.industry-btn');
+    const popup = document.querySelector('.industry-popup');
+    const closeBtn = popup ? popup.querySelector('.close-popup') : null;
+
+    if (!popup || !closeBtn || industryButtons.length === 0) {
+        console.error('Required industry elements not found');
+        return;
+    }
+
+    // Add click event listeners to industry buttons
+    industryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const industryName = this.querySelector('span').textContent;
+            const industry = industryDetails[industryName];
+
+            if (industry) {
+                const popupTitle = popup.querySelector('#popup-title');
+                const popupDescription = popup.querySelector('.popup-description');
+                const solutionsDetails = popup.querySelector('.solutions-details');
+
+                if (popupTitle) popupTitle.textContent = industryName;
+                if (popupDescription) popupDescription.innerHTML = industry.description;
+
+                if (solutionsDetails) {
+                    const solutionsHTML = Object.entries(industry.solutions)
+                        .map(([plan, solution]) => `
+                            <div class="solution-plan">
+                                <h4>${plan.charAt(0).toUpperCase() + plan.slice(1)}</h4>
+                                <p>${solution}</p>
+                            </div>
+                        `).join('');
+                    solutionsDetails.innerHTML = solutionsHTML;
+                }
+
+                popup.style.display = 'flex';
             }
         });
     });

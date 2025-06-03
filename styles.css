@@ -512,7 +512,6 @@ body {
     padding: 8rem 2rem;
     background: #000;
     position: relative;
-    overflow: hidden;
 }
 
 .industries .gradient-bg {
@@ -1620,4 +1619,161 @@ footer {
     to {
         opacity: 0;
     }
+}
+
+/* Industry Popup Styles */
+.industry-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.industry-popup .popup-content {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(30, 30, 30, 0.95));
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(20px);
+    animation: slideUpFade 0.4s ease-out forwards;
+    color: white;
+}
+
+.industry-popup .popup-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.industry-popup .popup-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.industry-popup .popup-content::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 4px;
+}
+
+.industry-solutions {
+    margin-bottom: 40px;
+    animation: fadeInUp 0.5s ease-out 0.2s backwards;
+}
+
+.industry-solutions h3 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.solutions-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.solution-plan {
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.solution-plan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.solution-plan:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.solution-plan:hover::before {
+    opacity: 0.1;
+}
+
+.solution-plan h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.solution-plan p {
+    color: #6366f1;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments for industry popup */
+@media (max-width: 768px) {
+    .industry-popup .popup-content {
+        padding: 25px;
+        width: 95%;
+    }
+
+    .industry-solutions h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .solutions-details {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .solution-plan {
+        padding: 20px;
+    }
+
+    .solution-plan h4 {
+        font-size: 18px;
+    }
+
+    .solution-plan p {
+        font-size: 16px;
+    }
+}
+
+/* Add smooth show/hide animations for industry popup */
+.industry-popup[style*="display: flex"] {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.industry-popup[style*="display: none"] {
+    animation: fadeOut 0.3s ease-out;
 } 

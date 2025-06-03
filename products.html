@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - AdeshSofTech Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .products-page {
+            padding: 120px 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            color: #6366f1;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .get-details-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .get-details-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-gradient);
+            border-color: transparent;
+        }
+        
+        @media (max-width: 768px) {
+            .products-page {
+                padding: 100px 1rem 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="AdeshSofTech Solutions" class="logo-img">
+                    <span>AdeshSofTech Solutions</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Content -->
+    <div class="products-page">
+        <div class="section-header">
+            <h2>Our Products</h2>
+            <p>Quality Hardware Solutions for Your Business</p>
+        </div>
+
+        <div class="category-filter">
+            <button class="filter-btn active" data-category="all">All Products</button>
+            <button class="filter-btn" data-category="computers">Computers</button>
+            <button class="filter-btn" data-category="laptops">Laptops</button>
+            <button class="filter-btn" data-category="printers">Printers & Scanners</button>
+            <button class="filter-btn" data-category="monitors">Monitors</button>
+            <button class="filter-btn" data-category="attendance">Attendance Systems</button>
+        </div>
+
+        <div class="products-grid">
+            <!-- Computers -->
+            <div class="product-card" data-category="computers">
+                <img src="images/refurbished.jpg" alt="Refurbished Computer" class="product-image">
+                <h3 class="product-title">Refurbished Desktop PC</h3>
+                <p class="product-description">Intel Core i5, 8GB RAM, 256GB SSD, Windows 10 Pro</p>
+                <p class="product-price">Starting from ₹15,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the Refurbished Desktop PC (Intel Core i5). Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+
+            <div class="product-card" data-category="computers">
+                <img src="images/new-pc.jpg" alt="New Computer" class="product-image">
+                <h3 class="product-title">New Desktop PC</h3>
+                <p class="product-description">Intel Core i7, 16GB RAM, 512GB SSD, Windows 11 Pro</p>
+                <p class="product-price">Starting from ₹45,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the New Desktop PC (Intel Core i7). Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+
+            <!-- Laptops -->
+            <div class="product-card" data-category="laptops">
+                <img src="images/laptop.jpg" alt="Business Laptop" class="product-image">
+                <h3 class="product-title">Business Laptop</h3>
+                <p class="product-description">Intel Core i5, 8GB RAM, 512GB SSD, 14" FHD Display</p>
+                <p class="product-price">Starting from ₹35,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the Business Laptop. Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+
+            <!-- Printers -->
+            <div class="product-card" data-category="printers">
+                <img src="images/laser.jpg" alt="Laser Printer" class="product-image">
+                <h3 class="product-title">Business Laser Printer</h3>
+                <p class="product-description">High-speed laser printer with duplex printing</p>
+                <p class="product-price">Starting from ₹12,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the Business Laser Printer. Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+
+            <div class="product-card" data-category="printers">
+                <img src="images/barcode.jpg" alt="Barcode Scanner" class="product-image">
+                <h3 class="product-title">Barcode Scanner</h3>
+                <p class="product-description">Fast Barcode Scanner with Barcode Printing Machine </p>
+                <p class="product-price">Starting from ₹14,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the Professional Barcode Scanner. Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+
+            <!-- Monitors -->
+            <div class="product-card" data-category="monitors">
+                <img src="images/intractive.jpg" alt="Smart Monitor" class="product-image">
+                <h3 class="product-title">Smart Intractive panal</h3>
+                <p class="product-description">55" 4K UHD Display with Built-in Smart Features</p>
+                <p class="product-price">Starting from ₹80,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the Smart Intractive Monitor. Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+
+            <!-- Attendance Systems -->
+            <div class="product-card" data-category="attendance">
+                <img src="images/biometric.jpg" alt="Biometric System" class="product-image">
+                <h3 class="product-title">Biometric Attendance System</h3>
+                <p class="product-description">Fingerprint & Face Recognition with Cloud Support</p>
+                <p class="product-price">Starting from ₹15,000</p>
+                <a href="https://wa.me/917720043415?text=I'm interested in the Biometric Attendance System. Please provide more details." class="get-details-btn">
+                    <i class="fab fa-whatsapp"></i> Get Details
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Category filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const category = button.getAttribute('data-category');
+
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html> 
