@@ -478,59 +478,97 @@ function reveal() {
 
 window.addEventListener('scroll', reveal);
 
-// Form animations
-const contactForm = document.getElementById('contactForm');
+// Form handling
+function handleFormSubmit(event) {
+    event.preventDefault();
+    return false;
+}
 
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return false;
+    }
+
+    return {
+        name,
+        email,
+        message
     };
+}
+
+function sendWhatsApp() {
+    const formData = validateForm();
+    if (!formData) return;
+
+    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
+    const whatsappUrl = `https://wa.me/917720043415?text=${whatsappMessage}`;
     
-    // Animate submit button
-    const submitBtn = this.querySelector('.submit-btn');
-    submitBtn.style.transform = 'scale(0.95)';
+    window.open(whatsappUrl, '_blank');
+    document.getElementById('contactForm').reset();
+}
+
+function sendEmail() {
+    const formData = validateForm();
+    if (!formData) return;
+
+    const subject = encodeURIComponent(`Website Contact Form: ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    const mailtoUrl = `mailto:aadeshsoftech@gmail.com?subject=${subject}&body=${body}`;
     
-    setTimeout(() => {
-        submitBtn.style.transform = 'scale(1)';
-        // Show success message with animation
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
-    }, 200);
-});
+    window.location.href = mailtoUrl;
+    document.getElementById('contactForm').reset();
+}
+
+// Newsletter subscription
+function subscribeNewsletter() {
+    const email = document.getElementById('newsletter-email').value.trim();
+    
+    if (!email) {
+        alert('Please enter your email address');
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    const subject = encodeURIComponent('Newsletter Subscription Request');
+    const body = encodeURIComponent(
+        `Hello AdeshSofTech Solutions,\n\n` +
+        `I would like to subscribe to your newsletter.\n\n` +
+        `My email address is: ${email}\n\n` +
+        `Please add me to your mailing list to receive updates about:\n` +
+        `- Latest technology trends\n` +
+        `- New services and solutions\n` +
+        `- Special offers and promotions\n` +
+        `- Company news and updates\n\n` +
+        `Thank you!`
+    );
+
+    const mailtoUrl = `mailto:aadeshsoftech@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoUrl;
+    
+    // Clear the input field
+    document.getElementById('newsletter-email').value = '';
+    
+    // Show success message
+    alert('Thank you for subscribing to our newsletter!');
+}
+
+// Email validation helper function
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
 
 // Gradient text animation for section headers
 const sectionHeaders = document.querySelectorAll('.section-header h2');
 sectionHeaders.forEach(header => {
     header.style.backgroundSize = '200% auto';
-});
-
-// WhatsApp Form Integration
-function sendWhatsApp(event) {
-    event.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // Format the message for WhatsApp
-    const formattedMessage = `*New Contact Form Submission*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Message:* ${message}`;
-    
-    // WhatsApp phone number (your business number)
-    const phoneNumber = '917720043415'; // Replace with your WhatsApp number
-    
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${formattedMessage}`;
-    
-    // Open WhatsApp in a new tab
-    window.open(whatsappURL, '_blank');
-    
-    // Reset form
-    document.getElementById('whatsappForm').reset();
-    
-    return false;
-} 
+}); 
