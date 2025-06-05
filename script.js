@@ -222,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeIndustryPopups();
     initializeNavigation();
     initializeAnimations();
+    initializeTestimonialsSlider();
 });
 
 // Initialize service popups
@@ -571,4 +572,133 @@ function isValidEmail(email) {
 const sectionHeaders = document.querySelectorAll('.section-header h2');
 sectionHeaders.forEach(header => {
     header.style.backgroundSize = '200% auto';
-}); 
+});
+
+// Testimonials Slider
+function initializeTestimonialsSlider() {
+    const slider = document.querySelector('.testimonials-slider');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const dotsContainer = document.querySelector('.slider-dots');
+    const totalCards = cards.length;
+    
+    let currentIndex = 0;
+    let autoplayInterval;
+    
+    // Create dots
+    for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+    
+    function updateSliderPosition(animate = true) {
+        const cardWidth = cards[0].offsetWidth + 30; // Including gap
+        if (animate) {
+            slider.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        } else {
+            slider.style.transition = 'none';
+        }
+        slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        
+        // Update dots
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSliderPosition();
+    }
+    
+    function showNextTestimonial() {
+        currentIndex = (currentIndex + 1) % totalCards;
+        updateSliderPosition();
+    }
+    
+    function showPrevTestimonial() {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        updateSliderPosition();
+    }
+    
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(showNextTestimonial, 5000);
+    }
+    
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+        }
+    }
+    
+    // Event Listeners
+    nextBtn.addEventListener('click', () => {
+        showNextTestimonial();
+        stopAutoplay();
+        startAutoplay();
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        showPrevTestimonial();
+        stopAutoplay();
+        startAutoplay();
+    });
+    
+    // Touch events
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+        slider.style.transition = 'none';
+    });
+    
+    slider.addEventListener('touchmove', e => {
+        const currentX = e.changedTouches[0].screenX;
+        const diff = touchStartX - currentX;
+        const cardWidth = cards[0].offsetWidth + 30;
+        const currentOffset = currentIndex * cardWidth;
+        slider.style.transform = `translateX(-${currentOffset + diff}px)`;
+    });
+    
+    slider.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                showNextTestimonial();
+            } else {
+                showPrevTestimonial();
+            }
+        } else {
+            updateSliderPosition();
+        }
+        
+        startAutoplay();
+    });
+    
+    // Pause autoplay on hover
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateSliderPosition(false);
+        }, 100);
+    });
+    
+    // Initialize
+    updateSliderPosition(false);
+    startAutoplay();
+} 
